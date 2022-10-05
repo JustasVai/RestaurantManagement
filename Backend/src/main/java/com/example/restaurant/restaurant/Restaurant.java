@@ -1,19 +1,29 @@
 package com.example.restaurant.restaurant;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.restaurant.menu.Menu;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="restaurant")
 public class Restaurant {
     @Id
+    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String address;
     private double rating;
     private String phoneNumber;
     private String description;
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)
+    private Set<Menu> menus = new HashSet<>();
+
+
 
     public Restaurant(int id, String name, String address, double rating, String phoneNumber, String description) {
         this.id = id;
@@ -73,5 +83,8 @@ public class Restaurant {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public Set<Menu> getMenus() {
+        return menus;
     }
 }

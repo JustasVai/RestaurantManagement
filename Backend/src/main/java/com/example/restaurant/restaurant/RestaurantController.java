@@ -26,7 +26,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurants")
-    public void addRestaurant(@RequestBody Restaurant restaurant){
+    public void addRestaurant(@RequestBody final Restaurant restaurant){
         restaurantService.addRestaurant(restaurant);
     }
 

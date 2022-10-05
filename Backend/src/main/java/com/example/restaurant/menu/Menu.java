@@ -1,6 +1,7 @@
 package com.example.restaurant.menu;
 
 import com.example.restaurant.restaurant.Restaurant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,30 +10,25 @@ import java.util.Date;
 @Table(name="menu")
 public class Menu {
     @Id
+    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date startDate;
     private Date endDate;
     private String title;
     private String description;
-    /*@OneToMany
-   //@JoinColumn(name = "restaurant_id")
-    //private Restaurant restaurant;
+    @ManyToOne
+    //@JsonIgnore
+    @JoinColumn(name = "restaurant_id",referencedColumnName = "id")
+    private Restaurant restaurant;
 
-    //public Restaurant getRestaurant() {
-    //    return restaurant;
-    //}
 
-    //public void setRestaurant(Restaurant restaurant) {
-      /  this.restaurant = restaurant;
-    }/
-*/
     public Menu(int id, Date startDate, Date endDate, String title, String description) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.title = title;
         this.description = description;
-        //this.restaurant = new Restaurant(restaurantId,"","",0,"","");
     }
 
     public Menu() {
@@ -68,6 +64,14 @@ public class Menu {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getDescription() {

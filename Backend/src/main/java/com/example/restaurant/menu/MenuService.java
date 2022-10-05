@@ -10,10 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class MenuService {
 
     @Autowired
     private MenuRepository menuRepository;
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     public List<Menu> getAllMenus(int restaurantId) {
         List<Menu> menus= new ArrayList<>();
@@ -25,8 +28,10 @@ public class MenuService {
         return menuRepository.findById(id).orElse(new Menu());
     }
 
-    public void addMenu(Menu menu)
+    public void addMenu(Menu menu, int restaurantId)
     {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(new Restaurant());
+        menu.setRestaurant(restaurant);
         menuRepository.save(menu);
     }
 

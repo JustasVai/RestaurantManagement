@@ -26,10 +26,9 @@ public class MenuController {
         return menuService.getMenu(menuId);
     }
 
-    @PostMapping("/restaurants/{restaurantId}/menus/{menuId}")
-    public void addRestaurant(@RequestBody Menu menu){
-        //menu.set
-        menuService.addMenu(menu);
+    @PostMapping("/restaurants/{restaurantId}/menus")
+    public void addRestaurant(@RequestBody Menu menu,@PathVariable(value = "restaurantId")int restaurantId){
+        menuService.addMenu(menu,restaurantId);
     }
     /*
     @DeleteMapping("/restaurants/{restaurantId}")
