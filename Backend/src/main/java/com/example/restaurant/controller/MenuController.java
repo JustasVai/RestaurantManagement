@@ -1,5 +1,7 @@
-package com.example.restaurant.menu;
+package com.example.restaurant.controller;
 
+import com.example.restaurant.service.MenuService;
+import com.example.restaurant.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +29,19 @@ public class MenuController {
     }
 
     @PostMapping("/restaurants/{restaurantId}/menus")
-    public void addRestaurant(@RequestBody Menu menu,@PathVariable(value = "restaurantId")int restaurantId){
+    public void addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")int restaurantId){
         menuService.addMenu(menu,restaurantId);
     }
+    @DeleteMapping("/restaurants/{restaurantId}/menus/{menuId}")
+    public void deleteMenu(@PathVariable(value = "menuId") final int menuId){
+        menuService.deleteMenu(menuId);
+    }
+    @PutMapping("/restaurants/{restaurantId}/menus/{menuId}")
+    public void updateMenu(@PathVariable(value = "menuId")final int menuId, @RequestParam(required = false) final String title){
+        menuService.updateMenu(menuId,title);
+    }
     /*
+
     @DeleteMapping("/restaurants/{restaurantId}")
     public void deleteRestaurant(@PathVariable(value = "restaurantId")int restaurantId)
     {

@@ -1,7 +1,9 @@
-package com.example.restaurant.menu;
+package com.example.restaurant.service;
 
-import com.example.restaurant.restaurant.Restaurant;
-import com.example.restaurant.restaurant.RestaurantRepository;
+import com.example.restaurant.model.Menu;
+import com.example.restaurant.model.Restaurant;
+import com.example.restaurant.repository.MenuRepository;
+import com.example.restaurant.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

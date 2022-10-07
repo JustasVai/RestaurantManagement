@@ -1,6 +1,5 @@
-package com.example.restaurant.menu;
+package com.example.restaurant.model;
 
-import com.example.restaurant.restaurant.Restaurant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -10,7 +9,6 @@ import java.util.Date;
 @Table(name="menu")
 public class Menu {
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date startDate;
@@ -18,7 +16,7 @@ public class Menu {
     private String title;
     private String description;
     @ManyToOne
-    //@JsonIgnore
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id",referencedColumnName = "id")
     private Restaurant restaurant;
 

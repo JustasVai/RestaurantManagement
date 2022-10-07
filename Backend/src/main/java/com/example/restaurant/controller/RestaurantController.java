@@ -1,5 +1,7 @@
-package com.example.restaurant.restaurant;
+package com.example.restaurant.controller;
 
+import com.example.restaurant.model.Restaurant;
+import com.example.restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurants/{restaurantId}")
-    public Restaurant getRestaurant(@PathVariable(value = "restaurantId")int restaurantId){
+    public Restaurant getRestaurant(@PathVariable(value = "restaurantId")final int restaurantId){
         return restaurantService.getRestaurant(restaurantId);
     }
 
@@ -31,13 +33,13 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/restaurants/{restaurantId}")
-    public void deleteRestaurant(@PathVariable(value = "restaurantId")int restaurantId)
+    public void deleteRestaurant(@PathVariable(value = "restaurantId")final int restaurantId)
     {
         restaurantService.deleteRestaurant(restaurantId);
     }
 
     @PutMapping("/restaurants/{restaurantId}")
-    public void updateRestaurant(@PathVariable(value = "restaurantId")int restaurantId, @RequestParam(required = false) double rating)
+    public void updateRestaurant(@PathVariable(value = "restaurantId")final int restaurantId, @RequestParam(required = false) double rating)
     {
         restaurantService.updateRestaurant(restaurantId,rating);
     }

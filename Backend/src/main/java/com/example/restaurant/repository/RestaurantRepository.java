@@ -1,6 +1,6 @@
-package com.example.restaurant.restaurant;
+package com.example.restaurant.repository;
 
-import org.springframework.data.jpa.repository.Query;
+import com.example.restaurant.model.Restaurant;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.example.restaurant.restaurant;
+package com.example.restaurant.model;
 
-import com.example.restaurant.menu.Menu;
+import com.example.restaurant.model.Menu;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -11,7 +11,6 @@ import java.util.Set;
 @Table(name="restaurant")
 public class Restaurant {
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
@@ -20,7 +19,7 @@ public class Restaurant {
     private String phoneNumber;
     private String description;
     @JsonIgnore
-    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<Menu> menus = new HashSet<>();
 
 

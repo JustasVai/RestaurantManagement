@@ -1,5 +1,7 @@
-package com.example.restaurant.restaurant;
+package com.example.restaurant.service;
 
+import com.example.restaurant.model.Restaurant;
+import com.example.restaurant.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class RestaurantService {
     }
 
     public Restaurant getRestaurant(int id){
-        return restaurantRepository.findById(id).orElse(new Restaurant());
+        return restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant with id: " + id + " could not be found"));
     }
 
     public void addRestaurant(Restaurant restaurant)
