@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="menu")
@@ -20,6 +22,8 @@ public class Menu {
     @JoinColumn(name = "restaurant_id",referencedColumnName = "id")
     private Restaurant restaurant;
 
+    @OneToMany(mappedBy = "menu",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<MenuItem> items = new HashSet<>();
 
     public Menu(int id, Date startDate, Date endDate, String title, String description) {
         this.id = id;
@@ -70,6 +74,10 @@ public class Menu {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public Set<MenuItem> getItems() {
+        return items;
     }
 
     public String getDescription() {

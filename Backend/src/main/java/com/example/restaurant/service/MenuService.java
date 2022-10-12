@@ -21,39 +21,69 @@ public class MenuService {
     private RestaurantRepository restaurantRepository;
 
     public List<Menu> getAllMenus(int restaurantId) {
-        List<Menu> menus= new ArrayList<>();
-        menuRepository.findAll().forEach(menus::add);
-        return  menus;
+        List <Menu> menus = menuRepository.findMenusByRestaurantId(restaurantId);
+        return menus;
     }
 
-    public Menu getMenu(int id){
-        return menuRepository.findById(id).orElse(new Menu());
+    public Menu getMenu(int menuId, int restaurantId){
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+
+        if(restaurant == null){
+            return null;
+        }
+            for (Menu menu: restaurant.getMenus()){
+                if (menu.getId()==menuId)
+                {
+                    return menu;
+                }
+            }
+
+            return null;
     }
 
-    public void addMenu(Menu menu, int restaurantId)
+    public Menu addMenu(Menu menu, int restaurantId)
     {
-        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(new Restaurant());
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        if(restaurant == null)
+        {
+            return null;
+        }
         menu.setRestaurant(restaurant);
         menuRepository.save(menu);
+        return menu;
     }
 
 
-    public void deleteMenu(int menuId) {
+    public Menu deleteMenu(int menuId,int restaurantId) {
+
+        if(!restaurantRepository.existsById(restaurantId))
+        {
+           return null;
+        }
+
         boolean exists = menuRepository.existsById(menuId);
         if(!exists)
         {
-            throw new IllegalStateException("Menu with id = " + menuId + " does not exists");
+            return null;
         }
+
         menuRepository.deleteById(menuId);
+        return new Menu();
     }
 
-    @Transactional
-    public void updateMenu(int menuId, String title) {
-        Menu menu = menuRepository.findById(menuId).orElseThrow(() -> new IllegalStateException("Menu with id = " + menuId + " does not exists."));
 
-        if(title!= null && menu.getTitle() != title)
+    public Menu updateMenu(int menuId, Menu menu) {
+        Menu menuOld = menuRepository.findById(menuId).orElse(null);
+        if(!menuRepository.existsById(menuId))
         {
-            menu.setTitle(title);
+            return null;
         }
+        menuOld.setTitle(menu.getTitle());
+        menuOld.setStartDate(menu.getStartDate());
+        menuOld.setEndDate(menu.getEndDate());
+        menuOld.setDescription(menu.getDescription());
+        menuRepository.save(menuOld);
+
+        return menuOld;
     }
 }

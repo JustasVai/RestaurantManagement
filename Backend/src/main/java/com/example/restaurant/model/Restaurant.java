@@ -1,6 +1,5 @@
 package com.example.restaurant.model;
 
-import com.example.restaurant.model.Menu;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -18,8 +17,8 @@ public class Restaurant {
     private double rating;
     private String phoneNumber;
     private String description;
-    @JsonIgnore
-    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    //@JsonIgnore
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Menu> menus = new HashSet<>();
 
 

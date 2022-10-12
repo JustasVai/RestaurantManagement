@@ -3,12 +3,14 @@ package com.example.restaurant.controller;
 import com.example.restaurant.service.MenuService;
 import com.example.restaurant.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "api/v1/restaurants/{restaurantId}")
 public class MenuController {
     private final MenuService menuService;
 
@@ -18,39 +20,57 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @GetMapping("/restaurants/{restaurantId}/menus")
-    public List<Menu> getAllMenus(@PathVariable(value = "restaurantId")int restaurantId){
-        return menuService.getAllMenus(restaurantId);
+    @GetMapping("/menus")
+    public ResponseEntity<List<Menu>> getAllMenus(@PathVariable(value = "restaurantId")final int restaurantId){
+        List<Menu> menu = menuService.getAllMenus(restaurantId);
+        if(menu.isEmpty())
+        {
+            return  new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(menu,HttpStatus.OK);
     }
 
-    @GetMapping("/restaurants/{restaurantId}/menus/{menuId}")
-    public Menu getMenu(@PathVariable(value = "menuId")int menuId){
-        return menuService.getMenu(menuId);
+    @GetMapping("/menus/{menuId}")
+    public ResponseEntity<Menu> getMenu(@PathVariable(value = "menuId")final int menuId,@PathVariable(value = "restaurantId")final int restaurantId){
+        Menu menu = menuService.getMenu(menuId,restaurantId);
+        if(menu == null)
+        {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(menu, HttpStatus.OK);
     }
 
-    @PostMapping("/restaurants/{restaurantId}/menus")
-    public void addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")int restaurantId){
-        menuService.addMenu(menu,restaurantId);
-    }
-    @DeleteMapping("/restaurants/{restaurantId}/menus/{menuId}")
-    public void deleteMenu(@PathVariable(value = "menuId") final int menuId){
-        menuService.deleteMenu(menuId);
-    }
-    @PutMapping("/restaurants/{restaurantId}/menus/{menuId}")
-    public void updateMenu(@PathVariable(value = "menuId")final int menuId, @RequestParam(required = false) final String title){
-        menuService.updateMenu(menuId,title);
-    }
-    /*
+    @PostMapping("/menus")
+    public ResponseEntity<String> addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")final int restaurantId){
 
-    @DeleteMapping("/restaurants/{restaurantId}")
-    public void deleteRestaurant(@PathVariable(value = "restaurantId")int restaurantId)
-    {
-        restaurantService.deleteRestaurant(restaurantId);
+        Menu menu1 = menuService.addMenu(menu,restaurantId);
+        if(menu1==null)
+        {
+            return new ResponseEntity<>("Restaurant with id " + restaurantId + " does not exists",HttpStatus.NOT_FOUND);
+        }
+        return  new ResponseEntity<>("Menu with id " + menu1.getId() + " created",HttpStatus.CREATED);
     }
 
-    @PutMapping("/restaurants/{restaurantId}")
-    public void updateRestaurant(@PathVariable(value = "restaurantId")int restaurantId, @RequestParam(required = false) double rating)
-    {
-        restaurantService.updateRestaurant(restaurantId,rating);
-    }*/
+    @DeleteMapping("/menus/{menuId}")
+    public ResponseEntity<String> deleteMenu(@PathVariable(value = "menuId") int menuId, @PathVariable(value="restaurantId") int restaurantId){
+       Menu menu =  menuService.deleteMenu(menuId,restaurantId);
+       if(menu == null)
+       {
+           return new ResponseEntity<>("",HttpStatus.NOT_FOUND);
+       }
+       return new ResponseEntity<>("Deleted",HttpStatus.OK);
+    }
+
+    @PutMapping("/menus/{menuId}")
+    public ResponseEntity<Menu> updateMenu(@PathVariable(value = "menuId")final int menuId, @RequestBody Menu menu){
+
+        Menu newMenu = menuService.updateMenu(menuId,menu);
+
+        if(newMenu == null)
+        {
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(newMenu,HttpStatus.OK);
+    }
+
 }
