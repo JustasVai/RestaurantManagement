@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,8 +20,7 @@ public class MenuService {
     private RestaurantRepository restaurantRepository;
 
     public List<Menu> getAllMenus(int restaurantId) {
-        List <Menu> menus = menuRepository.findMenusByRestaurantId(restaurantId);
-        return menus;
+        return menuRepository.findMenusByRestaurantId(restaurantId);
     }
 
     public Menu getMenu(int menuId, int restaurantId){
@@ -44,37 +42,45 @@ public class MenuService {
     public Menu addMenu(Menu menu, int restaurantId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+
         if(restaurant == null)
         {
             return null;
         }
+
         menu.setRestaurant(restaurant);
         menuRepository.save(menu);
+
         return menu;
     }
 
-
+    @Transactional
     public Menu deleteMenu(int menuId,int restaurantId) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        Menu menu = menuRepository.findById(menuId).orElse(null);
 
-        if(!restaurantRepository.existsById(restaurantId))
+        if(restaurant == null || menu == null)
         {
            return null;
         }
 
-        boolean exists = menuRepository.existsById(menuId);
-        if(!exists)
+
+        if(!restaurant.getMenus().contains(menu))
         {
             return null;
         }
+        restaurant.getMenus().remove(menu);
+        restaurantRepository.save(restaurant);
+        menuRepository.delete(menu);
 
-        menuRepository.deleteById(menuId);
-        return new Menu();
+        return menu;
     }
 
 
-    public Menu updateMenu(int menuId, Menu menu) {
+    public Menu updateMenu(int menuId, Menu menu, int restaurantId) {
         Menu menuOld = menuRepository.findById(menuId).orElse(null);
-        if(!menuRepository.existsById(menuId))
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        if(!menuRepository.existsById(menuId) || !restaurant.getMenus().contains(menuOld))
         {
             return null;
         }

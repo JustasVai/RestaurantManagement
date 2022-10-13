@@ -8,7 +8,9 @@ import com.example.restaurant.repository.MenuRepository;
 import com.example.restaurant.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,45 +26,98 @@ public class MenuItemService {
 
     public List<MenuItem> getAllMenuItems(int restaurantId,int menuId)
     {
-       List<MenuItem> menuItems = menuItemRepository.findMenuItemsByMenuId(menuId);
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
 
-       return menuItems;
-    }
-    public MenuItem getOneMenuItem(int menuId,int menuItemId)
-    {
-        final MenuItem item = menuItemRepository.findById(menuItemId).orElse(null);
-        return item;
-    }
-    public MenuItem addOneMenuItem(MenuItem item, int menuId)
-    {
+        List<MenuItem> menuItems= new ArrayList<>();
+
         Menu menu = menuRepository.findById(menuId).orElse(null);
-        if(menu == null)
+
+        if(restaurant==null || menu == null)
+        {
+            return menuItems;
+        }
+
+        menuItems = menuItemRepository.findMenuItemsByMenuId(menuId);
+
+        return menuItems;
+    }
+    public MenuItem getOneMenuItem(int menuId, int menuItemId, int restaurantId)
+    {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+
+        Menu menu = menuRepository.findById(menuId).orElse(null);
+
+        if(restaurant==null || menu == null)
         {
             return null;
         }
-        item.setMenu(menu);
-        menuItemRepository.save(item);
-        return item;
+
+        final MenuItem item = menuItemRepository.findById(menuItemId).orElse(null);
+        if(restaurant.getMenus().contains(menu) && menu.getItems().contains(item))
+        {
+            return item;
+        }
+        return null;
     }
+    public MenuItem addOneMenuItem(MenuItem item, int menuId, int restaurantId)
+    {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        Menu menu = menuRepository.findById(menuId).orElse(null);
+
+        if(menu == null || restaurant == null)
+        {
+            return null;
+        }
+        if (restaurant.getMenus().contains(menu))
+        {
+            item.setMenu(menu);
+            menuItemRepository.save(item);
+            return item;
+        }
+
+        return null;
+
+    }
+    @Transactional
     public MenuItem deleteMenuItem(int menuId,int restaurantId, int menuItemId) {
 
-        if(!restaurantRepository.existsById(restaurantId))
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        Menu menu = menuRepository.findById(menuId).orElse(null);
+        MenuItem menuItem = menuItemRepository.findById(menuItemId).orElse(null);
+
+        if(restaurant == null || menuItem == null || menu == null)
         {
             return null;
         }
 
-        boolean exists = menuRepository.existsById(menuId);
-        if(!exists)
+        if(!restaurant.getMenus().contains(menu) || !menu.getItems().contains(menuItem))
         {
             return null;
         }
-        if(!menuItemRepository.existsById(menuItemId)){
-            return null;
-        }
 
-        menuItemRepository.deleteById(menuItemId);
 
-        return new MenuItem("Name");
+        menu.getItems().remove(menuItem);
+        menuRepository.save(menu);
+        menuItemRepository.delete(menuItem);
+
+        return menuItem;
     }
 
+    public MenuItem updateMenuItem(int restaurantId, int menuId, int itemId, MenuItem menuItem) {
+        Menu menu = menuRepository.findById(menuId).orElse(null);
+        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        MenuItem oldItem = menuItemRepository.findById(itemId).orElse(null);
+
+        if(restaurant.getMenus().contains(menu)&&menu.getItems().contains(oldItem))
+        {
+            oldItem.setDescription(menuItem.getDescription());
+            oldItem.setPrice(menuItem.getPrice());
+            oldItem.setRecipe(menuItem.getRecipe());
+            oldItem.setName(menuItem.getName());
+            menuItemRepository.save(oldItem);
+            return  oldItem;
+        }
+        return null;
+
+    }
 }

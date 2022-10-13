@@ -27,10 +27,12 @@ public class RestaurantController {
     @GetMapping("/restaurants/{restaurantId}")
     public ResponseEntity<Restaurant> getRestaurant(@PathVariable(value = "restaurantId")final int restaurantId){
         Restaurant restaurant = restaurantService.getRestaurant(restaurantId);
+
         if(restaurant == null)
         {
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
+
         return new ResponseEntity<>(restaurant,HttpStatus.OK);
     }
 

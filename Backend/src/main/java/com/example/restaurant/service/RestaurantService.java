@@ -57,15 +57,8 @@ public class RestaurantService {
         restaurantOld.setPhoneNumber(restaurant.getPhoneNumber());
         restaurantOld.setDescription(restaurant.getDescription());
         restaurantRepository.save(restaurantOld);
+
         return restaurantOld;
-        /*
-        double rating = restaurant.getRating();
-
-        if(rating > 0 && restaurant.getRating() != rating && rating <= 5) {
-            restaurantOld.setRating(rating);
-        }
-
-        return restaurantOld;*/
     }
 
 }
