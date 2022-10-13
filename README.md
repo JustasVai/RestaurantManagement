@@ -15,6 +15,7 @@ The following table gives an overview of how the API functions generally behave.
 | `DELETE` | Return `200 OK` if the resource was deleted successfully. The (deleted) result is returned as JSON. |
 
 ## API V1  /api/v1/{path}:
+### Swagger can be reached /swagger-ui/index.html
 ### Get list of restaurants
 `GET /restaurants`
 #### Example Response
