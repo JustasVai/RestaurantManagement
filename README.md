@@ -4,16 +4,16 @@
 The Restaurant management system(backend) REST API description.
 
 ### Get list of restaurants
-** GET /restaurants
+`GET /restaurants`
 
 ### Get a specific restaurant
-** GET /restaurants/{uuid}
+`GET /restaurants/{uuid}`
 
 ### Post new restaurant
-** POST /restaurants
+`POST /restaurants`
 
 ### Update restaurant
-** PUT /restaurants/{uuid}
+`PUT /restaurants/{uuid}`
 
 ### Delete restaurant 
-** DELETE /restaurants/{uuid}
+`DELETE /restaurants/{uuid}`
