@@ -1,9 +1,9 @@
 # RestaurantManagement
 
-##REST API
+## REST API
 The Restaurant management system(backend) REST API description.
 
-###Get list of restaurants
+### Get list of restaurants
 **/restaurants
 
 | HTTP method            | POST (create)    | GET (read)  | PUT (update)           | DELETE (delete)    |
