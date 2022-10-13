@@ -1,4 +1,6 @@
 # RestaurantManagement
+## System database ER diagram
+![image](https://user-images.githubusercontent.com/67903431/195720011-1ee3054e-f7f2-4dc4-990c-6a3f1451ea82.png)
 
 ## REST API
 The Restaurant management system(backend) REST API description.
