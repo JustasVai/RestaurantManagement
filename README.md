@@ -5,6 +5,15 @@
 ## REST API
 The Restaurant management system(backend) REST API description.
 
+The following table gives an overview of how the API functions generally behave.
+
+| Request type | Description |
+| ------------ | ----------- |
+| `GET`    | Access one or more resources and return the result as JSON. |
+| `POST`   | Return `201 Created` if the resource is successfully created. |
+| `PUT`    | Return `200 OK` if the resource is accessed or modified successfully. The (modified) result is returned as JSON. |
+| `DELETE` | Return `200 OK` if the resource was deleted successfully. The (deleted) result is returned as JSON. |
+
 ### Get list of restaurants
 `GET /restaurants`
 #### Example Response
