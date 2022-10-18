@@ -3,6 +3,7 @@ package com.example.restaurant.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -17,10 +18,13 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    @NotEmpty
     private String name;
     private Double price;
     private String recipe;
     private String description;
+
    // @Enumerated(EnumType.STRING)
     //@Column(name="food_category")
    // private FoodCategory category;

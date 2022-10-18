@@ -1,8 +1,11 @@
 package com.example.restaurant.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity
@@ -13,6 +16,7 @@ public class Menu {
     private UUID id;
     private Date startDate;
     private Date endDate;
+    @NotEmpty
     private String title;
     private String description;
     @ManyToOne
