@@ -18,16 +18,9 @@ The following table gives an overview of how the API functions generally behave.
 ### Swagger can be reached /swagger-ui/index.html
 ### Get list of restaurants
 `GET /restaurants`
-#### Example Response
-  ![image](https://user-images.githubusercontent.com/67903431/195717352-98e2daee-f1e0-44d7-950a-4882b81efbbd.png)
-
 
 ### Get a specific restaurant
 `GET /restaurants/{restaurantID}`
-#### Example
-![image](https://user-images.githubusercontent.com/67903431/195717465-0f15d9ae-70bf-48dc-af72-de885cb9ddb7.png)
-
-
 
 ### Post new restaurant
 `POST /restaurants`
