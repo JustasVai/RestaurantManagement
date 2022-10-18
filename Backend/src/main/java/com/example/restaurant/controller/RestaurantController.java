@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "api/v1")
@@ -25,7 +26,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/restaurants/{restaurantId}")
-    public ResponseEntity<Restaurant> getRestaurant(@PathVariable(value = "restaurantId")final int restaurantId){
+    public ResponseEntity<Restaurant> getRestaurant(@PathVariable(value = "restaurantId") UUID restaurantId){
         Restaurant restaurant = restaurantService.getRestaurant(restaurantId);
 
         if(restaurant == null)
@@ -43,7 +44,7 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/restaurants/{restaurantId}")
-    public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable(value = "restaurantId")final int restaurantId)
+    public ResponseEntity<Restaurant> deleteRestaurant(@PathVariable(value = "restaurantId")final UUID restaurantId)
     {
         Restaurant restaurant = restaurantService.deleteRestaurant(restaurantId);
         if (restaurant == null)
@@ -55,7 +56,7 @@ public class RestaurantController {
     }
 
     @PutMapping("/restaurants/{restaurantId}")
-    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable(value = "restaurantId") int restaurantId, @RequestBody Restaurant restaurant)
+    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable(value = "restaurantId") UUID restaurantId, @RequestBody Restaurant restaurant)
     {
         if(restaurantService.getRestaurant(restaurantId)==null)
         {

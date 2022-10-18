@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -23,7 +24,7 @@ public class RestaurantService {
         return  restaurants;
     }
 
-    public Restaurant getRestaurant(int id){
+    public Restaurant getRestaurant(UUID id){
         return restaurantRepository.findById(id).orElse(null);
     }
 
@@ -33,7 +34,7 @@ public class RestaurantService {
     }
 
 
-    public Restaurant deleteRestaurant(int restaurantId) {
+    public Restaurant deleteRestaurant(UUID restaurantId) {
 
         boolean exists = restaurantRepository.existsById(restaurantId);
 
@@ -48,7 +49,7 @@ public class RestaurantService {
     }
 
 
-    public Restaurant updateRestaurant(int restaurantId,Restaurant restaurant) {
+    public Restaurant updateRestaurant(UUID restaurantId,Restaurant restaurant) {
 
         Restaurant restaurantOld = restaurantRepository.findById(restaurantId).orElse(null);
         restaurantOld.setAddress(restaurant.getAddress());

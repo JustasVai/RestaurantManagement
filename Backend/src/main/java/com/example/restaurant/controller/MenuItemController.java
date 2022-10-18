@@ -2,7 +2,6 @@ package com.example.restaurant.controller;
 
 import com.example.restaurant.model.Menu;
 import com.example.restaurant.model.MenuItem;
-import com.example.restaurant.model.Restaurant;
 import com.example.restaurant.service.MenuItemService;
 import com.example.restaurant.service.MenuService;
 import com.example.restaurant.service.RestaurantService;
@@ -12,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "api/v1/restaurants/{restaurantId}/menus/{menuId}")
@@ -28,7 +28,7 @@ public class MenuItemController {
     }
 
     @GetMapping("/items")
-    public ResponseEntity<List<MenuItem>> getAllMenuItems(@PathVariable(value = "restaurantId")final int restaurantId,@PathVariable(value = "menuId")final int menuId){
+    public ResponseEntity<List<MenuItem>> getAllMenuItems(@PathVariable(value = "restaurantId")final UUID restaurantId, @PathVariable(value = "menuId")final UUID menuId){
         List<MenuItem> menuItems = menuItemService.getAllMenuItems(restaurantId,menuId);
         Menu menu = menuService.getMenu(menuId,restaurantId);
         if(!restaurantService.getRestaurant(restaurantId).getMenus().contains(menu) || menuItems.isEmpty())
@@ -39,7 +39,7 @@ public class MenuItemController {
     }
 
     @GetMapping("/items/{id}")
-    public ResponseEntity<MenuItem> getOneMenuItem(@PathVariable(value = "menuId")final int menuId,@PathVariable(value = "restaurantId")final int restaurantId,@PathVariable(value = "id")final int id){
+    public ResponseEntity<MenuItem> getOneMenuItem(@PathVariable(value = "menuId")final UUID menuId,@PathVariable(value = "restaurantId")final UUID restaurantId,@PathVariable(value = "id")final UUID id){
         MenuItem menuItem = menuItemService.getOneMenuItem(menuId,id, restaurantId);
 
         if(menuItem == null)
@@ -51,7 +51,7 @@ public class MenuItemController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity addMenuItem(@RequestBody MenuItem menuItem,@PathVariable(value = "restaurantId")final int restaurantId,@PathVariable(value = "menuId")final int menuId){
+    public ResponseEntity addMenuItem(@RequestBody MenuItem menuItem,@PathVariable(value = "restaurantId")final UUID restaurantId,@PathVariable(value = "menuId")final UUID menuId){
 
         MenuItem menu1 = menuItemService.addOneMenuItem(menuItem,menuId,restaurantId);
         if(menu1==null)
@@ -62,7 +62,7 @@ public class MenuItemController {
     }
 
     @DeleteMapping("/items/{itemId}")
-    public ResponseEntity<MenuItem> deleteMenuItem(@PathVariable(value = "menuId") int menuId, @PathVariable(value="restaurantId") int restaurantId,@PathVariable(value="itemId") int itemId){
+    public ResponseEntity<MenuItem> deleteMenuItem(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId,@PathVariable(value="itemId") UUID itemId){
         MenuItem menuItem = menuItemService.deleteMenuItem(menuId,restaurantId,itemId);
 
         if(menuItem == null)
@@ -73,7 +73,7 @@ public class MenuItemController {
         return new ResponseEntity<>(menuItem,HttpStatus.OK);
     }
     @PutMapping("/items/{itemId}")
-    public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "menuId") int menuId, @PathVariable(value="restaurantId") int restaurantId,@PathVariable(value="itemId") int itemId, @RequestBody MenuItem menuItem)
+    public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId,@PathVariable(value="itemId") UUID itemId, @RequestBody MenuItem menuItem)
     {
         MenuItem item = menuItemService.updateMenuItem(restaurantId,menuId,itemId,menuItem);
 

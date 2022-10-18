@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "menu_item")
@@ -14,8 +15,8 @@ public class MenuItem {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String name;
     private Double price;
     private String recipe;
@@ -29,22 +30,23 @@ public class MenuItem {
     @JoinColumn(name = "menu_id",referencedColumnName = "id")
     private Menu menu;
 
-    public MenuItem(String name) {
+
+    public MenuItem(){}
+
+    public MenuItem(UUID id, String name, Double price, String recipe, String description, Menu menu) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.recipe = recipe;
         this.description = description;
-       // this.category = category;
         this.menu = menu;
     }
 
-    public MenuItem(){}
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "api/v1/restaurants/{restaurantId}")
@@ -24,7 +25,7 @@ public class MenuController {
     }
 
     @GetMapping("/menus")
-    public ResponseEntity<List<Menu>> getAllMenus(@PathVariable(value = "restaurantId")final int restaurantId){
+    public ResponseEntity<List<Menu>> getAllMenus(@PathVariable(value = "restaurantId")final UUID restaurantId){
 
         List<Menu> menu = menuService.getAllMenus(restaurantId);
 
@@ -37,7 +38,7 @@ public class MenuController {
     }
 
     @GetMapping("/menus/{menuId}")
-    public ResponseEntity<Menu> getMenu(@PathVariable(value = "menuId")final int menuId,@PathVariable(value = "restaurantId")final int restaurantId){
+    public ResponseEntity<Menu> getMenu(@PathVariable(value = "menuId")final UUID menuId,@PathVariable(value = "restaurantId")final UUID restaurantId){
         Menu menu = menuService.getMenu(menuId,restaurantId);
         if(menu == null)
         {
@@ -47,7 +48,7 @@ public class MenuController {
     }
 
     @PostMapping("/menus")
-    public ResponseEntity addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")final int restaurantId){
+    public ResponseEntity addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")final UUID restaurantId){
 
         Menu menu1 = menuService.addMenu(menu,restaurantId);
 
@@ -60,7 +61,7 @@ public class MenuController {
 
 
     @DeleteMapping("/menus/{menuId}")
-    public ResponseEntity<Menu> deleteMenu(@PathVariable(value = "menuId") int menuId, @PathVariable(value="restaurantId") int restaurantId){
+    public ResponseEntity<Menu> deleteMenu(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId){
        Menu menu =  menuService.deleteMenu(menuId,restaurantId);
        if(menu == null)
        {
@@ -70,7 +71,7 @@ public class MenuController {
     }
 
     @PutMapping("/menus/{menuId}")
-    public ResponseEntity<Menu> updateMenu(@PathVariable(value = "menuId")final int menuId, @RequestBody Menu menu, @PathVariable(value = "restaurantId")final int restaurantId){
+    public ResponseEntity<Menu> updateMenu(@PathVariable(value = "menuId")final UUID menuId, @RequestBody Menu menu, @PathVariable(value = "restaurantId")final UUID restaurantId){
 
         Menu newMenu = menuService.updateMenu(menuId,menu,restaurantId);
 

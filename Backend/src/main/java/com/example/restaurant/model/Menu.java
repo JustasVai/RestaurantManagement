@@ -3,17 +3,14 @@ package com.example.restaurant.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="menu")
 public class Menu {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private Date startDate;
     private Date endDate;
     private String title;
@@ -23,10 +20,11 @@ public class Menu {
     @JoinColumn(name = "restaurant_id",referencedColumnName = "id")
     private Restaurant restaurant;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "menu",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<MenuItem> items = new HashSet<>();
 
-    public Menu(int id, Date startDate, Date endDate, String title, String description) {
+    public Menu(UUID id, Date startDate, Date endDate, String title, String description) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -37,11 +35,11 @@ public class Menu {
     public Menu() {
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

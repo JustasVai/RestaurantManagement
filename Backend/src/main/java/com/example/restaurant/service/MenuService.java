@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -19,11 +20,11 @@ public class MenuService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public List<Menu> getAllMenus(int restaurantId) {
+    public List<Menu> getAllMenus(UUID restaurantId) {
         return menuRepository.findMenusByRestaurantId(restaurantId);
     }
 
-    public Menu getMenu(int menuId, int restaurantId){
+    public Menu getMenu(UUID menuId, UUID restaurantId){
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
 
         if(restaurant == null){
@@ -39,7 +40,7 @@ public class MenuService {
             return null;
     }
 
-    public Menu addMenu(Menu menu, int restaurantId)
+    public Menu addMenu(Menu menu, UUID restaurantId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
 
@@ -55,7 +56,7 @@ public class MenuService {
     }
 
     @Transactional
-    public Menu deleteMenu(int menuId,int restaurantId) {
+    public Menu deleteMenu(UUID menuId,UUID restaurantId) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
         Menu menu = menuRepository.findById(menuId).orElse(null);
 
@@ -77,7 +78,7 @@ public class MenuService {
     }
 
 
-    public Menu updateMenu(int menuId, Menu menu, int restaurantId) {
+    public Menu updateMenu(UUID menuId, Menu menu, UUID restaurantId) {
         Menu menuOld = menuRepository.findById(menuId).orElse(null);
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
         if(!menuRepository.existsById(menuId) || !restaurant.getMenus().contains(menuOld))

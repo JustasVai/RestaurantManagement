@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class MenuItemService {
@@ -24,7 +25,7 @@ public class MenuItemService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public List<MenuItem> getAllMenuItems(int restaurantId,int menuId)
+    public List<MenuItem> getAllMenuItems(UUID restaurantId, UUID menuId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
 
@@ -41,7 +42,7 @@ public class MenuItemService {
 
         return menuItems;
     }
-    public MenuItem getOneMenuItem(int menuId, int menuItemId, int restaurantId)
+    public MenuItem getOneMenuItem(UUID menuId, UUID menuItemId, UUID restaurantId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
 
@@ -59,7 +60,7 @@ public class MenuItemService {
         }
         return null;
     }
-    public MenuItem addOneMenuItem(MenuItem item, int menuId, int restaurantId)
+    public MenuItem addOneMenuItem(MenuItem item, UUID menuId, UUID restaurantId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
         Menu menu = menuRepository.findById(menuId).orElse(null);
@@ -79,7 +80,7 @@ public class MenuItemService {
 
     }
     @Transactional
-    public MenuItem deleteMenuItem(int menuId,int restaurantId, int menuItemId) {
+    public MenuItem deleteMenuItem(UUID menuId,UUID restaurantId, UUID menuItemId) {
 
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
         Menu menu = menuRepository.findById(menuId).orElse(null);
@@ -103,7 +104,7 @@ public class MenuItemService {
         return menuItem;
     }
 
-    public MenuItem updateMenuItem(int restaurantId, int menuId, int itemId, MenuItem menuItem) {
+    public MenuItem updateMenuItem(UUID restaurantId, UUID menuId, UUID itemId, MenuItem menuItem) {
         Menu menu = menuRepository.findById(menuId).orElse(null);
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
         MenuItem oldItem = menuItemRepository.findById(itemId).orElse(null);
