@@ -1,6 +1,8 @@
 package com.example.restaurant.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.swing.text.html.Option;
 import java.util.*;
@@ -15,7 +17,7 @@ public class    User {
     @Id
     @Column(nullable = false, unique = true, length = 45)
     private String username;
-    //@JsonIgnore
+    @JsonIgnore
     @Column(nullable = false, length = 255)
     private String password;
 
@@ -66,6 +68,9 @@ public class    User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 
 }

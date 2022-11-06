@@ -4,6 +4,7 @@ import com.example.restaurant.model.Menu;
 import com.example.restaurant.model.Restaurant;
 import com.example.restaurant.repository.MenuRepository;
 import com.example.restaurant.repository.RestaurantRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @Service
 @Transactional
+@Slf4j
 public class MenuService {
 
     @Autowired
@@ -30,9 +32,10 @@ public class MenuService {
         if(restaurant == null){
             return null;
         }
-            for (Menu menu: restaurant.getMenus()){
-                if (menu.getId()==menuId)
+        for (Menu menu: restaurant.getMenus()){
+                if (menu.getId().equals(menuId))
                 {
+                    log.info("{}",menu);
                     return menu;
                 }
             }

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -94,13 +95,13 @@ public class UserService implements UserDetailsService {
         user.setRoles(roles);
         userRepository.save(user);
     }
-
-//    public void addRoleToUser(String username,String name)
-//    {
-//        User user = userRepository.findByUsername(username);
-//        Role role = roleRepository.findByName(name);
-//        user.addRole(role);
-//    }
+    @Transactional
+    public void addRoleToUser(String username,String name)
+    {
+        User user = userRepository.findByUsername(username);
+        Role role = roleRepository.findByRoleName(name);
+        user.addRole(role);
+    }
 //    public User create(RegistrationDto request) {
 //        List<Role> roles = new ArrayList<>();
 //        try {

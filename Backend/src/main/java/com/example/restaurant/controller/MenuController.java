@@ -6,6 +6,7 @@ import com.example.restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class MenuController {
         this.restaurantService = restaurantService;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/menus")
     public ResponseEntity<List<Menu>> getAllMenus(@PathVariable(value = "restaurantId")final UUID restaurantId){
 
@@ -36,7 +38,7 @@ public class MenuController {
 
         return new ResponseEntity<>(menu,HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/menus/{menuId}")
     public ResponseEntity<Menu> getMenu(@PathVariable(value = "menuId")final UUID menuId,@PathVariable(value = "restaurantId")final UUID restaurantId){
         Menu menu = menuService.getMenu(menuId,restaurantId);
@@ -46,7 +48,7 @@ public class MenuController {
         }
         return new ResponseEntity<>(menu, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/menus")
     public ResponseEntity addMenu(@RequestBody Menu menu,@PathVariable(value = "restaurantId")final UUID restaurantId){
 
@@ -59,7 +61,7 @@ public class MenuController {
         return  new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/menus/{menuId}")
     public ResponseEntity<Menu> deleteMenu(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId){
        Menu menu =  menuService.deleteMenu(menuId,restaurantId);
@@ -69,7 +71,7 @@ public class MenuController {
        }
        return new ResponseEntity<>(menu,HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     @PutMapping("/menus/{menuId}")
     public ResponseEntity<Menu> updateMenu(@PathVariable(value = "menuId")final UUID menuId, @RequestBody Menu menu, @PathVariable(value = "restaurantId")final UUID restaurantId){
 

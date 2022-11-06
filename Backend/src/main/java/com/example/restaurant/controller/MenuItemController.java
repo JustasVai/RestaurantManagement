@@ -8,6 +8,7 @@ import com.example.restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class MenuItemController {
         this.menuService = menuService;
         this.restaurantService = restaurantService;
     }
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/items")
     public ResponseEntity<List<MenuItem>> getAllMenuItems(@PathVariable(value = "restaurantId")final UUID restaurantId, @PathVariable(value = "menuId")final UUID menuId){
         List<MenuItem> menuItems = menuItemService.getAllMenuItems(restaurantId,menuId);
@@ -37,7 +38,7 @@ public class MenuItemController {
         }
         return new ResponseEntity<>(menuItems,HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/items/{id}")
     public ResponseEntity<MenuItem> getOneMenuItem(@PathVariable(value = "menuId")final UUID menuId,@PathVariable(value = "restaurantId")final UUID restaurantId,@PathVariable(value = "id")final UUID id){
         MenuItem menuItem = menuItemService.getOneMenuItem(menuId,id, restaurantId);
@@ -49,7 +50,7 @@ public class MenuItemController {
 
         return new ResponseEntity<>(menuItem, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     @PostMapping("/items")
     public ResponseEntity addMenuItem(@RequestBody MenuItem menuItem,@PathVariable(value = "restaurantId")final UUID restaurantId,@PathVariable(value = "menuId")final UUID menuId){
 
@@ -60,7 +61,7 @@ public class MenuItemController {
         }
         return  new ResponseEntity<>(HttpStatus.CREATED);
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/items/{itemId}")
     public ResponseEntity<MenuItem> deleteMenuItem(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId,@PathVariable(value="itemId") UUID itemId){
         MenuItem menuItem = menuItemService.deleteMenuItem(menuId,restaurantId,itemId);
@@ -72,6 +73,7 @@ public class MenuItemController {
 
         return new ResponseEntity<>(menuItem,HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     @PutMapping("/items/{itemId}")
     public ResponseEntity<MenuItem> updateMenuItem(@PathVariable(value = "menuId") UUID menuId, @PathVariable(value="restaurantId") UUID restaurantId,@PathVariable(value="itemId") UUID itemId, @RequestBody MenuItem menuItem)
     {

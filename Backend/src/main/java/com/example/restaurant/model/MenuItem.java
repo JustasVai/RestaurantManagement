@@ -17,6 +17,7 @@ public class MenuItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true, length = 16)
     private UUID id;
 
     @NotEmpty
@@ -105,12 +106,13 @@ public class MenuItem {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MenuItem menuItem = (MenuItem) o;
-        return id == menuItem.id;
+        return Objects.equals(id, menuItem.id);
     }
 
     @Override

@@ -49,6 +49,23 @@
 //
 //        return ResponseEntity.ok().body(tokens);
 //    }
+//    @PostMapping("/login")
+//    public ResponseEntity<Map<String, String>> login(@RequestBody LoginDto request) {
+//        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.username(), request.password());
+//        Authentication authentication = authenticationManager.authenticate(token);
+//
+//        org.springframework.security.core.userdetails.User userDetails = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+//        User user = userService.getByUsername(userDetails.getUsername());
+//
+//        String accessToken = jwtTokenUtil.generateAccessToken(user);
+//        String refreshToken = jwtTokenUtil.generateRefreshToken(user);
+//
+//        Map<String, String> tokens = new HashMap<>();
+//        tokens.put("access_token", accessToken);
+//        tokens.put("refresh_token", refreshToken);
+//
+//        return ResponseEntity.ok().body(tokens);
+//    }
 //
 ////    @PostMapping("/signin")
 ////    public ResponseEntity<?> signin(@RequestBody SignInDto signInRequest) {

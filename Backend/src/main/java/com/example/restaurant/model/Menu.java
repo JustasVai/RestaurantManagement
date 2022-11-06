@@ -13,10 +13,12 @@ import java.util.*;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true, length = 16)
     private UUID id;
     private Date startDate;
     private Date endDate;
     @NotEmpty
+    @Column(nullable = false, unique = true, length = 45)
     private String title;
     private String description;
     @ManyToOne
@@ -69,7 +71,7 @@ public class Menu {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Menu menu = (Menu) o;
-        return id == menu.id;
+        return id.equals(menu.id);
     }
 
     @Override

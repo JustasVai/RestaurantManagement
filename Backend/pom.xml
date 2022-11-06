@@ -89,6 +89,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Restaurant management</finalName>
 	</build>
 
 </project>

@@ -14,6 +14,7 @@ import java.util.UUID;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true, length = 16)
     private UUID id;
     @NotEmpty
     private String name;

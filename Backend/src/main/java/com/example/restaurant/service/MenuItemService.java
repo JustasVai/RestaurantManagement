@@ -6,6 +6,7 @@ import com.example.restaurant.model.Restaurant;
 import com.example.restaurant.repository.MenuItemRepository;
 import com.example.restaurant.repository.MenuRepository;
 import com.example.restaurant.repository.RestaurantRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class MenuItemService {
     @Autowired
     private MenuRepository menuRepository;
@@ -63,17 +65,22 @@ public class MenuItemService {
     public MenuItem addOneMenuItem(MenuItem item, UUID menuId, UUID restaurantId)
     {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElse(null);
+        log.info("Restaurant - {}",restaurant);
         Menu menu = menuRepository.findById(menuId).orElse(null);
-
+        log.info("menu - {}",menu);
         if(menu == null || restaurant == null)
         {
             return null;
         }
-        if (restaurant.getMenus().contains(menu))
-        {
-            item.setMenu(menu);
-            menuItemRepository.save(item);
-            return item;
+        log.info("{}",restaurant.getMenus().contains(menu));
+        for (Menu menu1: restaurant.getMenus()){
+            if (menu1.getId().equals(menu.getId()))
+            {
+                log.info("{}",menu);
+                item.setMenu(menu);
+                menuItemRepository.save(item);
+                return item;
+            }
         }
 
         return null;
