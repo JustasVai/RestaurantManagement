@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.restaurant.dto.LoginDto;
 import com.example.restaurant.dto.RegistrationDto;
 import com.example.restaurant.model.Role;
 import com.example.restaurant.model.User;
@@ -20,7 +21,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -39,6 +42,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 
 public class UserController {
 
@@ -68,7 +72,36 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginDto request) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.username(), request.password());
 
+        Authentication authentication = authenticationManager.authenticate(token);
+
+        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+        if(!userRepository.existsByUsername(user.getUsername()))
+        {
+            return ResponseEntity.notFound().build();
+        }
+        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
+        String access_token = JWT.create()
+                .withSubject(user.getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis()+10*60*1000))
+                .withIssuer(user.getUsername())
+                .withClaim("roles",user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .sign(algorithm);
+        String refresh_token = JWT.create()
+                .withSubject(user.getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis()+30*60*1000))
+                .withIssuer(user.getUsername())
+                .sign(algorithm);
+
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("access_token", access_token);
+        tokens.put("refresh_token", refresh_token);
+
+        return ResponseEntity.ok().body(tokens);
+    }
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok().body(userService.getAll());
@@ -141,6 +174,7 @@ public class UserController {
                 throw new RuntimeException("Refresh token is missing");
             }
     }
+    @CrossOrigin
     @PostMapping("/register")
     public ResponseEntity<String> signup(@RequestBody RegistrationDto signUpRequest) {
 
