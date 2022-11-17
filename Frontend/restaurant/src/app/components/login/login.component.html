@@ -1,39 +1,28 @@
-<div class="mask d-flex align-items-center h-100 gradient-custom-3">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body p-5">
-            <h2 class="text-uppercase text-center mb-5">Login to account</h2>
+<div class="main-div">
+  <div class="mat-app-background basic-container">
+    <div layout-gt-sm="column" style="min-width: 350px; max-width: 450px; margin:auto ">
+      <mat-card flex-gt-sm class="push">
+        <mat-card-title>User login</mat-card-title>
+        <mat-card-content>
+          <form class="example-form" #loginform="ngForm" (submit)="ProceedLogin(loginform)">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Username" required name="username" ngModel>
+            </mat-form-field>
 
-            <form [formGroup]="loginForm">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Password" required type="password" name="password" ngModel>
+            </mat-form-field>
+            <div>
+              <button mat-raised-button type="submit" color="primary">Login</button>
+              <button mat-raised-button style="margin: 5px;" color="accent" (click)="RedirectRegister()">Register</button>
+            </div>
+          </form>
 
-              <div class="form-outline mb-4">
-                <input formControlName="username" type="text" id="form3Example1cg"
-                  class="form-control form-control-lg" />
-                <label class="form-label" for="form3Example1cg">Your Username</label>
-              </div>
-              <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                class="text-danger">*Username is required</small>
-              <div class="form-outline mb-4"  >
-                <input formControlName="password" type="password" id="form3Example4cg"
-                  class="form-control form-control-lg" />
-                <label class="form-label" for="form3Example4cg">Password</label>
-              </div>
-              <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
-                class="text-danger">*Password is required</small>
-              <div class="d-flex justify-content-center">
-                <button (click)="onLogin()"  type="button"
-                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
-              </div>
+        </mat-card-content>
 
-              <p class="text-center text-muted mt-5 mb-0">Don't have account? <a href="/register"
-                  class="fw-bold text-body"><u>Sign up</u></a></p>
-
-            </form>
-
-          </div>
-        </div>
-      </div>
+      </mat-card>
     </div>
   </div>
+</div>

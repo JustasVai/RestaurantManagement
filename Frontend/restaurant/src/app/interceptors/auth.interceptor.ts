@@ -3,16 +3,18 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse,
+  HttpClient
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   static accessToken = '';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const req = request.clone({
@@ -20,7 +22,12 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${AuthInterceptor.accessToken}`
       }
     });
-   
-    return next.handle(request);
+   return next.handle(req);
+    // return next.handle(req).pipe(catchError(err: HttpErrorResponse)=> {
+    //   if(err.status === 401){
+    //     return this.http.post("")
+    //   }
+    //   return throwError(() => err)
+    // });
   }
 }

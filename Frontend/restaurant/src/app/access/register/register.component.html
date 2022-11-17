@@ -1,0 +1,31 @@
+<div class="main-div">
+    <div class="mat-app-background basic-container">
+        <div layout-gt-sm="column" style="min-width: 350px; max-width: 450px; margin:auto ">
+            <mat-card flex-gt-sm class="push">
+                <mat-card-title>User Registration</mat-card-title>
+                <mat-card-content>
+                    <form class="example-form" [formGroup]="reactiveform" (ngSubmit)="SaveUser()">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username" formControlName="username">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" type="password" formControlName="password">
+                        </mat-form-field>
+                        
+                        <div>
+                            <button mat-raised-button type="submit" color="primary">Register</button>
+                            <button mat-raised-button style="margin: 5px;" color="accent"
+                                (click)="RedirectLogin()">Already have an account?</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

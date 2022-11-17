@@ -1,56 +1,45 @@
-import { ThisReceiver } from '@angular/compiler';
+import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+
+import { UserService } from 'src/app/services/user.service';
+import { MaterialModule } from 'src/Material-Module';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, MaterialModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService, private userAuthService: UserAuthService, private router: Router) { }
+  constructor(private service: UserService, private route: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
   }
+  respdata: any;
 
-  onLogin() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
-      this.auth.login(this.loginForm.value).subscribe({
-        next: (res) => {
-          this.userAuthService.setToken(res.access_token);
-          this.router.navigate(['/']);
-        },
-        error: (err) => {
-          alert(err.error.message)
+  ProceedLogin(logindata: any) {
+    if (logindata.valid) {
+      this.service.ProceedLogin(logindata.value).subscribe(item => {
+        this.respdata = item;
+        if (this.respdata != null) {
+          localStorage.setItem('token', this.respdata.access_token);
+          this.route.navigate(['home']);
+        } else {
+          alert("Login failed");
         }
+        //console.log(this.respdata);
       })
     }
-    else {
-      this.validateAllFormFields(this.loginForm);
-    }
+    //console.log(logindata.value);
   }
 
-  private validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true })
-      }
-      else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control)
-      }
-    })
+  RedirectRegister() {
+    this.route.navigate(['register']);
   }
 
 }
