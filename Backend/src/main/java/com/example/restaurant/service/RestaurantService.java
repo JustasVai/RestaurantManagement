@@ -2,6 +2,7 @@ package com.example.restaurant.service;
 
 import com.example.restaurant.model.Restaurant;
 import com.example.restaurant.repository.RestaurantRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @Service
 @Transactional
+@Slf4j
 public class RestaurantService {
 
     @Autowired
@@ -25,6 +27,7 @@ public class RestaurantService {
     }
 
     public Restaurant getRestaurant(UUID id){
+            log.info(id.toString());
         return restaurantRepository.findById(id).orElse(null);
     }
 

@@ -9,21 +9,33 @@ export class UserService {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
 
-  ProceedLogin(inputData:any){
-    return this.http.post('http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/login',inputData);
+  ProceedLogin(inputData: any) {
+    return this.http.post('http://localhost:8081/api/login', inputData);
   }
 
-  IsLoggedIn(){
-    return localStorage.getItem('token')!=null;
+  IsLoggedIn() {
+    return localStorage.getItem('token') != null;
   }
-  GetToken(){
-    return localStorage.getItem('token')!=null?localStorage.getItem('token'):'';
+  GetToken() {
+    return localStorage.getItem('token') != null ? localStorage.getItem('token') : '';
   }
-  Registration(inputData:any){
-    return this.http.post('http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/register',inputData, { responseType: 'text' });
+  Registration(inputData: any) {
+    return this.http.post('http://localhost:8081/api/register', inputData, { responseType: 'text' });
+  }
+  GetRole() {
+    var token = localStorage.getItem('token');
+    if (token != null) {
+      var extractData = JSON.parse(Buffer.from(token?.split('.')[1], 'base64').toString());
+      return extractData.roles;
+    }
+    else
+    {
+      return '';
+    }
+
   }
 }

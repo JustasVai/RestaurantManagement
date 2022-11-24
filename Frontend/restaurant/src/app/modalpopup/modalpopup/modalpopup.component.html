@@ -1,0 +1,12 @@
+<h2>Edit user roles</h2>
+<section class="example-section">
+    <span class="example-list-section">
+        <ul *ngFor="let role of roles let i = index">
+            <mat-checkbox [disabled]="role.completed" [color]="role.color" [checked]="selected === i" (change)="selected = i">{{role.name}}
+            </mat-checkbox>
+        </ul>
+    </span>
+</section>
+<div>
+    <button mat-stroked-button color="accent" (click)="AddRoleToUser(roles[selected].name)">Add</button>
+</div>

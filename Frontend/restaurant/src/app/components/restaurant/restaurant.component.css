@@ -1,0 +1,20 @@
+table,mat-paginator{
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .main-div {
+    height: 100vh; 
+   display: flex;
+   padding: 0 16px;
+   flex-direction: column;
+   /* align-items: center; */
+   background-color: rgb(153, 153, 199);
+   
+}
+.create {
+    margin-top: 7vh;
+    margin-left: 25%;
+}

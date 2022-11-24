@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
         CustomAutheticationFilter customAutheticationFilter = new CustomAutheticationFilter(authenticationManagerBean());
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/api/login","/api/token/refresh").permitAll();
+        http.authorizeRequests().antMatchers("/api/login","/api/token/refresh", "/swagger-ui.html","/swagger-ui/index .html").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/register").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();

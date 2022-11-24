@@ -1,6 +1,33 @@
 .main-div {
-    height: 100vh;
+    height: 100vh; 
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../../../assets/otherplate.jpg");  
+    background-size: cover;  
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.blur {
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(8px); 
+    height: 100vh;
+    width: 100vw;
+ }
+span{
+    font-family: 'Indie-flower', cursive;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:120px;
+    letter-spacing:0.1em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+    text-shadow: 
+              8px 8px #8e4510,
+              20px 20px #000000;
 }

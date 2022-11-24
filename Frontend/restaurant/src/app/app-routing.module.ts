@@ -4,9 +4,10 @@ import { AccessModule } from './access/access.module';
 import { RegisterComponent } from './access/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { UserComponent } from './components/user/user.component';
 
-import { AuthGuard } from './Guard/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'restaurant',
+    component: RestaurantComponent, canActivate: [AuthGuard]
   }
 ];
 

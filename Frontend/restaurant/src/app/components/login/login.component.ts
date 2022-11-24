@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   respdata: any;
-
+  
   ProceedLogin(logindata: any) {
     if (logindata.valid) {
       this.service.ProceedLogin(logindata.value).subscribe(item => {
         this.respdata = item;
         if (this.respdata != null) {
           localStorage.setItem('token', this.respdata.access_token);
+          localStorage.setItem('refresh_token',this.respdata.refresh_token);
+
           this.route.navigate(['home']);
         } else {
           alert("Login failed");

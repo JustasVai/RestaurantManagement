@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccessRoutingModule } from './access/access-routing.module';
@@ -12,13 +12,20 @@ import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from 'src/Material-Module';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ModalpopupComponent } from './modalpopup/modalpopup/modalpopup.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { PopupComponent } from './components/restaurant/popup/popup.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    ModalpopupComponent,
+    RestaurantComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FormsModule,
     AccessRoutingModule,
     MaterialModule,
-  
+  ReactiveFormsModule
   ],
   providers: [
     {

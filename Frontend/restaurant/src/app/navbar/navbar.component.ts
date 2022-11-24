@@ -32,6 +32,7 @@ export class NavbarComponent implements DoCheck {
 
   onLogout(){
     localStorage.removeItem('token');
+
     this.router.navigate(['/login']);
   }
 }

@@ -1,7 +1,6 @@
-
 <div fxLayout="column" fxFlexFill>
     <mat-toolbar *ngIf="isMenuVisible" class="navbar-color mat-elevation-z8 p-0" fxLayout="row"
-        fxLayoutAlign="start stretch" style="z-index: 2">
+        fxLayoutAlign="start stretch" style="z-index: 2; height: 5vh; min-height:20px">
 
         <button mat-button (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
@@ -26,6 +25,10 @@
                     fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;" (click)="drawer.toggle()">
                     <mat-icon class="mr-2">people</mat-icon>Users
                 </button>
+                <button mat-button routerLink="/restaurant" routerLinkActive="selected no-border txt-bold"
+                    fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;" (click)="drawer.toggle()">
+                    <mat-icon class="mr-2">free_breakfast</mat-icon>Restaurants
+                </button>  
                 <mat-divider></mat-divider>
                 <!--<button mat-button routerLink="/login" routerLinkActive="selected no-border txt-bold"
                     fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;">

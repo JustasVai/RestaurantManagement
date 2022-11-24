@@ -26,10 +26,6 @@ public class MenuItem {
     private String recipe;
     private String description;
 
-   // @Enumerated(EnumType.STRING)
-    //@Column(name="food_category")
-   // private FoodCategory category;
-
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "menu_id",referencedColumnName = "id")

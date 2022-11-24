@@ -108,7 +108,6 @@ public class UserController {
     }
 
 
-
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/roles")
     public ResponseEntity<List<Role>> getRoles() {
