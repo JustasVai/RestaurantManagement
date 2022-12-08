@@ -4,5 +4,6 @@ export interface RestaurantModel {
     address: string,
     rating: number,
     phoneNumber: string,
-    description: string
+    description: string,
+    image: string,
 }

@@ -15,6 +15,13 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ModalpopupComponent } from './modalpopup/modalpopup/modalpopup.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { PopupComponent } from './components/restaurant/popup/popup.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { MenuPopupComponent } from './components/menu/menu-popup/menu-popup.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { ItemPopUpComponent } from './components/menu-item/item-pop-up/item-pop-up.component';
+import { RecipePopupComponent } from './components/menu-item/recipe-popup/recipe-popup.component';
+
+
 
 
 @NgModule({
@@ -26,6 +33,11 @@ import { PopupComponent } from './components/restaurant/popup/popup.component';
     ModalpopupComponent,
     RestaurantComponent,
     PopupComponent,
+    MenuComponent,
+   MenuPopupComponent,
+   MenuItemComponent,
+   ItemPopUpComponent,
+   RecipePopupComponent
   ],
   imports: [
     BrowserModule,

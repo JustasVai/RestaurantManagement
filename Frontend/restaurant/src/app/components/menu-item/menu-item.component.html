@@ -1,0 +1,53 @@
+<div class="main-div">
+    <h2 class="page-header" style="text-align:center; padding-top:150px;">Menu Items</h2>
+    <div class="create">
+        <button mat-raised-button class="buttons"  *ngIf="isAdmin  || isEmployee" (click)="OpenPopUp('')">Create Menu Item</button>
+    </div>
+    <div class="menu">
+        <ng-container>
+            <div class="container">
+
+                <p *ngIf="menuItems.length == 0"
+                    style="font-size:30px; padding-top:10px;  font-family: 'Indie-flower', cursive;">This menu does not
+                    have any items</p>
+                <div class="row">
+                    <div class="col-md-4 mx-auto my-5" *ngFor="let item of menuItems; let i = index">
+                        <div (click)="OpenRecipe(item.recipe)" *ngIf="isAdmin || isEmployee">
+                            <div class="item" style="position: relative;">
+                                <h5 class="card-title" style="font-size: 3vh;">{{item.name}}</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{item.description}}</li>
+                                    <li class="list-group-item">Price: {{item.price | currency:'EUR'}}</li>
+                                    <div style="padding-top:5px; text-align:center;display:block;">
+                                        <a mat-raised-button *ngIf="isAdmin || isEmployee" style="margin-right:5px;"
+                                            (click)="EditItem(item.id);$event.stopPropagation();"
+                                            color="primary">Edit</a>
+                                        <a mat-raised-button *ngIf="isAdmin || isEmployee" color="accent"
+                                            (click)="DeleteItem(item.id);$event.stopPropagation();">Delete</a>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div *ngIf="!isAdmin && !isEmployee ">
+                            <div class="item" style="position: relative;">
+                                <h5 class="card-title" style="font-size: 3vh;">{{item.name}}</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{item.description}}</li>
+                                    <li class="list-group-item">Price: {{item.price | currency:'EUR':true}}</li>
+                                    <div style="padding-top:5px; text-align:center;display:block;">
+                                        <a mat-raised-button *ngIf="isAdmin || isEmployee" style="margin-right:5px;"
+                                            (click)="EditItem(item.id);$event.stopPropagation();"
+                                            color="primary">Edit</a>
+                                        <a mat-raised-button *ngIf="isAdmin || isEmployee" color="accent"
+                                            (click)="DeleteItem(item.id);$event.stopPropagation();">Delete</a>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

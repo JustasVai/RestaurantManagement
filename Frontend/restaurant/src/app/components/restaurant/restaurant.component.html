@@ -1,4 +1,4 @@
-<div class="main-div">
+<!-- <div class="main-div">
     <div class="back">
         <div class="create">
             <a mat-raised-button (click)="OpenPopUp('',false)" color="primary">Create Restaurant</a>
@@ -47,4 +47,62 @@
             [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
         </mat-paginator>
     </div>
+    *ngIf="restaurantData.length"
+</div> -->
+<div class="main-div">
+    <h2 class="page-header">Restaurants</h2>
+    <div class="create">
+        <button *ngIf="isAdmin" mat-raised-button (click)="OpenPopUp('',false)" class="buttons">Create
+            Restaurant</button>
+    </div>
+    <ng-container>
+        <div class="container" *ngFor="let restaurant of restaurantData">
+            <div class="row item" style="position: relative;" (click)="OpenMenu(restaurant.id)">
+
+                <div class="col-md-2">
+                    <img src="https://picsum.photos/150/150?random={{restaurant.id}}" width="150" height="150" />
+                </div>
+
+                <div class="col-md-4" *ngIf="restaurant.address">
+                    <h3 style="font-size: 5vh;">{{ restaurant.name }}</h3>
+                    <span>Address</span>
+                    <br>
+                    <span style="font-size: 3vh;font-family: 'Indie-flower', cursive; color:grey">{{
+                        restaurant.address}}</span><br>
+                    <span>Phone Number</span>
+                    <br><span style="font-size: 3vh;font-family: 'Indie-flower', cursive;color:grey"> {{
+                        restaurant.phoneNumber}}</span><br>
+
+                </div>
+
+                <div class="col-md-4"
+                    style="float:left; background-color:grey; border-radius: 30px; padding: 10px 15px; color:white;">
+                    <span class=>{{ restaurant.description}}</span>
+                </div>
+
+                <div class="rating" style="padding-top:5px;">
+                    <button mat-icon-button *ngFor="let ratingId of ratingArr; index as i" [id]="'star_'+i"
+                        (click)="onClick(i+1);$event.stopPropagation();" [matTooltip]="ratingId+1"
+                        matTooltipPosition="above">
+                        <mat-icon>
+                            {{showIcon(i)}}
+                        </mat-icon>
+                    </button>
+                </div>
+
+
+
+
+                <div class="col-md-2">
+                    <a mat-raised-button *ngIf="isAdmin "
+                        (click)="EditRestaurant(restaurant.id,true);$event.stopPropagation();" style="margin-right:5px;"
+                        color="primary">Edit</a>
+                    <a mat-raised-button *ngIf="isAdmin "
+                        (click)="RemoveRestaurant(restaurant.id);$event.stopPropagation();" color="accent">Delete</a>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
 </div>

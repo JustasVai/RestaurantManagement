@@ -1,0 +1,60 @@
+<div class="image">
+
+
+  <div class="menus">
+    <div class="col-md-12">
+      <div>
+        <img src="../../../assets/Le-menu.png" style="display:block;margin:auto; padding-top:8vh;">
+        <div class="create">
+          <button mat-raised-button class="buttons" (click)="OpenPopUp('')" *ngIf="isAdmin || isEmployee">Create
+            Menu</button>
+        </div>
+
+        <ng-container>
+          <div class="container" *ngIf="isAdmin || isEmployee">
+            <div *ngFor="let menu of menuData; let i = index">
+              <div class="row item" style="position: relative; " (click)="OpenMenu(menu.id)">
+                <h5 class="card-title"
+                  style="font-size: 3vh;   font-family: 'Indie-flower', cursive; padding-bottom:10px;">{{menu.title}}
+                </h5>
+                <ul class="list-group list-group-flush" style="border-radius: 5px;">
+                  <li class="list-group-item">{{menu.description}}</li>
+                  <li class="list-group-item">Menu starts at {{menu.startDate | date: 'dd/MM/yyyy'}}</li>
+                  <li class="list-group-item">Ends at {{menu.endDate | date: 'dd/MM/yyyy'}}</li>
+                  <li class="list-group-item"> {{menu.isActive}}</li>
+                  <div style="padding-top:5px; text-align:center;display:block; " *ngIf="isAdmin || isEmployee">
+                    <a mat-raised-button (click)="EditMenu(menu.id);$event.stopPropagation();" style="margin-right:5px;"
+                      color="primary">Edit</a>
+                    <a mat-raised-button (click)="RemoveMenu(menu.id);$event.stopPropagation();"
+                      color="accent">Delete</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="container" *ngIf="!isAdmin && !isEmployee">
+            <div *ngFor="let menu of currentMenu; let i = index">
+              <div class="row item" style="position: relative; " (click)="OpenMenu(menu.id)">
+                <h5 class="card-title"
+                  style="font-size: 3vh;   font-family: 'Indie-flower', cursive; padding-bottom:10px;">{{menu.title}}
+                </h5>
+                <ul class="list-group list-group-flush" style="border-radius: 5px;">
+                  <li class="list-group-item">{{menu.description}}</li>
+                  <li class="list-group-item">Menu starts at {{menu.startDate | date: 'dd/MM/yyyy'}}</li>
+                  <li class="list-group-item">Ends at {{menu.endDate | date: 'dd/MM/yyyy'}}</li>
+                  <div style="padding-top:5px; text-align:center;display:block; " *ngIf="isAdmin || isEmployee">
+                    <a mat-raised-button (click)="EditMenu(menu.id);$event.stopPropagation();" style="margin-right:5px;"
+                      color="primary">Edit</a>
+                    <a mat-raised-button (click)="RemoveMenu(menu.id);$event.stopPropagation();"
+                      color="accent">Delete</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>

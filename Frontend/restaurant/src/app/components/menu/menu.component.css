@@ -1,0 +1,72 @@
+.menu {
+    padding-top: 10vh;
+
+}
+
+.menus {
+    width: 100vw;
+    display: block;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    background-image: url("../../../assets/greek-food-background-traditional-different-greek-dishes-set-greek-food-background-traditional-different-greek-dishes-set-top-view-178761927.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    margin: auto;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: baseline;
+    flex-direction: column;
+    align-content: center;
+    
+}
+
+.create {
+    margin: auto;
+    text-align: center;
+}
+
+.item {
+    
+    padding-top:20px;
+    padding-bottom: 25px;
+    padding-left:10px;
+    min-width: 280px;
+    max-width: 350px;
+    background-color: rgba(0, 128, 0, 1);
+    font-size: 13px;
+    font-weight: 500;
+    -webkit-box-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    -moz-box-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    box-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    margin:3vh auto 5vh;
+    border-radius: 30px;
+    transition: background-color 2s ease-out 100ms;
+}
+.buttons{
+    border: 2px solid rgba(235, 152, 9, 0.966);
+    color: black;
+    border-radius: 50px;
+    padding: 8px 25px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    background-color: transparent;
+    
+}
+.buttons:hover {
+    background-color: #cda45e;
+    color: #fff;
+}
+.item:hover{
+    background-color:rgba(0, 128, 0, 0.5);
+}

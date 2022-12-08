@@ -4,7 +4,18 @@
 
 .main-div {
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../../../assets/fw-bg-gradient.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mat-card{
+    -webkit-box-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    -moz-box-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    box-shadow: 0 0 20px rgba(0, 128, 0, 1);
 }

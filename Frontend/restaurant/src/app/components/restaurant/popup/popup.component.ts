@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import * as e from 'Node_modules/@types/cors';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import * as alertify from 'alertifyjs'
 @Component({

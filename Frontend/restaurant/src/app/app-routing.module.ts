@@ -8,6 +8,8 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
 import { UserComponent } from './components/user/user.component';
 
 import { AuthGuard } from './guard/auth.guard';
+import { MenuComponent } from './components/menu/menu.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 
 const routes: Routes = [
@@ -30,7 +32,15 @@ const routes: Routes = [
   },
   {
     path: 'restaurant',
-    component: RestaurantComponent, canActivate: [AuthGuard]
+    component: RestaurantComponent, canActivate: [AuthGuard],
+  },
+  {
+    path: 'menu/:restaurant',
+    component: MenuComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'menu-item/:menu/:restaurant',
+    component: MenuItemComponent, canActivate: [AuthGuard]
   }
 ];
 

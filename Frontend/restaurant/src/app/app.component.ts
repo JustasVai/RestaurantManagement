@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -7,21 +7,38 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements DoCheck{
+export class AppComponent implements DoCheck,OnInit{
   
 
-  isAdmin  = false;
-  constructor(private service : UserService){
+
+  isMenuVisible =true;
+
+  constructor(private service : UserService,private router:Router){
 
   }
   
   ngDoCheck(): void {
+    const currentRoute = this.router.url;
+
+    if((currentRoute=='/login') || (currentRoute=='/register')){
+      this.isMenuVisible=false;
+    }
+    else{
+      this.isMenuVisible=true;
+    }
+  }
+
+  ngOnInit():void{
     
   }
 
-
   title = 'restaurant';
- 
 
+  onLogout(){
+    localStorage.removeItem('token');
+
+    this.router.navigate(['/login']);
+  }
+ 
  
 }

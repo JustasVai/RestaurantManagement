@@ -29,7 +29,7 @@ export class UserService {
   GetRole() {
     var token = localStorage.getItem('token');
     if (token != null) {
-      var extractData = JSON.parse(Buffer.from(token?.split('.')[1], 'base64').toString());
+      var extractData = JSON.parse(atob(token?.split('.')[1]).toString());
       return extractData.roles;
     }
     else

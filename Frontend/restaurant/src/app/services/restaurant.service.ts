@@ -32,4 +32,8 @@ export class RestaurantService {
   {
     return this.http.post(this.apiUrl,restaurant);
   }
+  GetRandomImage()
+  {
+    return this.http.get("https://picsum.photos/id/870/200/300?grayscale&blur=2")
+  }
 }

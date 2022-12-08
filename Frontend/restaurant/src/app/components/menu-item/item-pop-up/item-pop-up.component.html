@@ -1,0 +1,38 @@
+<form class="example-form" [formGroup]="menuItemForm" (ngSubmit)="SaveMenuItem()">
+    <mat-card>
+        <mat-card-content>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" formControlName="id">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0" formControlName="price">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+              </mat-form-field>
+
+             
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                 <textarea matInput placeholder="Item Description.." formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Recipe</mat-label>
+                 <textarea matInput placeholder="Item Recipe.." formControlName="recipe"></textarea>
+            </mat-form-field>
+
+            <div class="example-button-row">
+                <button mat-raised-button color="primary">Save</button> | <a (click)="ClosePopUp()" mat-raised-button
+                    color="accent">Close</a>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

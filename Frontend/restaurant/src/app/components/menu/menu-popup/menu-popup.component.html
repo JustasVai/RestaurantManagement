@@ -1,0 +1,43 @@
+<form class="example-form" [formGroup]="menuForm" (ngSubmit)="SaveMenu()">
+    <mat-card>
+        <mat-card-content>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" formControlName="id">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+
+     
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [formGroup]="menuForm" [rangePicker]="picker">
+                  <input matStartDate formControlName="startDate" placeholder="Start date">
+                  <input matEndDate formControlName="endDate" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+                <mat-error *ngIf="menuForm.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="menuForm.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" formControlName="description">
+            </mat-form-field>
+
+
+            <div class="example-button-row">
+                <button mat-raised-button color="primary">Save</button> | <a (click)="ClosePopUp()" mat-raised-button
+                    color="accent">Close</a>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

@@ -1,58 +1,40 @@
 <div fxLayout="column" fxFlexFill>
     <mat-toolbar *ngIf="isMenuVisible" class="navbar-color mat-elevation-z8 p-0" fxLayout="row"
-        fxLayoutAlign="start stretch" style="z-index: 2; height: 5vh; min-height:20px">
+        style="z-index:10; height: 8vh;" class="example-button-row">
 
-        <button mat-button (click)="drawer.toggle()">
+        <!-- <button mat-button (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
+        </button> -->
+
+        <button class="extended-fab-button" mat-fab color="primary" routerLink="/home"
+            routerLinkActive="router-link-active">
+            <mat-icon>home</mat-icon>
         </button>
 
-        <button mat-button routerLink="/home" routerLinkActive="router-link-active">
-            <mat-icon>home</mat-icon>
+        <button class="extended-fab-button" mat-fab color="accent" routerLink="/user"
+            routerLinkActive="router-link-active" *ngIf="isAdmin">
+            <mat-icon>people</mat-icon>
+            <span class="extended-fab-button__text">Users</span>
+        </button>
+
+        <button class="extended-fab-button" mat-fab color="accent" routerLink="/restaurant"
+            routerLinkActive="router-link-active">
+            <mat-icon>people</mat-icon>
+            <span class="extended-fab-button__text">Restaurants</span>
         </button>
 
         <span class="flexExpand"></span>
 
-        <div fxLayout="row" style="margin-right: 20px;" fxShow="false" fxShow.gt-sm>
-            <button mat-button (click)="onLogout()">Logout</button>
+        <div fxLayout="row" style="margin-right: 20px; " fxShow="false" fxShow.gt-sm>
+            <button mat-button (click)="onLogout()">Logout <mat-icon>power_settings_new</mat-icon> </button>
         </div>
 
     </mat-toolbar>
 
-    <mat-drawer-container fxFlex autosize class="background">
-        <mat-drawer #drawer>
-            <div fxLayout="column" fxFlex>
-                <button mat-button routerLink="/user" routerLinkActive="selected no-border txt-bold"
-                    fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;" (click)="drawer.toggle()">
-                    <mat-icon class="mr-2">people</mat-icon>Users
-                </button>
-                <button mat-button routerLink="/restaurant" routerLinkActive="selected no-border txt-bold"
-                    fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;" (click)="drawer.toggle()">
-                    <mat-icon class="mr-2">free_breakfast</mat-icon>Restaurants
-                </button>  
-                <mat-divider></mat-divider>
-                <!--<button mat-button routerLink="/login" routerLinkActive="selected no-border txt-bold"
-                    fxLayoutAlign="start" class="py-2 pr-5" style="width: 200px;">
-                    <mat-icon class="mr-2">filter_2</mat-icon>Logout
-                </button>
-                <mat-divider></mat-divider>
-            -->
-
-
-                <!--<button mat-button routerLink="/page3" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="start" class="py-2 pr-5">
-            <mat-icon class="mr-2">filter_3</mat-icon>Page 3</button>
-          <mat-divider></mat-divider>
-          <button mat-button routerLink="/page4" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="start" class="py-2 pr-5">
-            <mat-icon class="mr-2">filter_4</mat-icon>Page 4</button>
-          <mat-divider></mat-divider>
-          <button mat-button routerLink="/page5" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="start" class="py-2 pr-5">
-            <mat-icon class="mr-2">filter_5</mat-icon>Page 5</button>-->
-
-                <mat-divider></mat-divider>
-            </div>
-        </mat-drawer>
+    <mat-drawer-container fxFlex autosize class="background" style="z-index: 2;">
 
         <!--PAGES-->
-        <div style="display: inline;">
+        <div style="display: inline; height:100vh;">
             <router-outlet></router-outlet>
         </div>
 

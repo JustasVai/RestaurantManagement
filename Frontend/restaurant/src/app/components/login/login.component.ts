@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
         if (this.respdata != null) {
           localStorage.setItem('token', this.respdata.access_token);
           localStorage.setItem('refresh_token',this.respdata.refresh_token);
-
+          localStorage.setItem('isAdmin', "false");
+          localStorage.setItem('isEmployee', "false");
           this.route.navigate(['home']);
         } else {
           alert("Login failed");
