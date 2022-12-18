@@ -1,8 +1,9 @@
-# RestaurantManagement
+# Project description
 ## System database ER diagram
-![image](https://user-images.githubusercontent.com/67903431/195720011-1ee3054e-f7f2-4dc4-990c-6a3f1451ea82.png)
+![image](https://user-images.githubusercontent.com/67903431/208318871-2a622abc-09fe-44fb-a4e7-a13bc42710ad.png)
 
-## REST API
+
+## API documentation
 The Restaurant management system(backend) REST API description.
 
 The following table gives an overview of how the API functions generally behave.
@@ -15,27 +16,27 @@ The following table gives an overview of how the API functions generally behave.
 | `DELETE` | Return `200 OK` if the resource was deleted successfully. The (deleted) result is returned as JSON. |
 
 ## API V1  /api/v1/{path}:
-### Swagger can be reached /swagger-ui/index.html
-### Get list of restaurants
+### Restaurants 
+#### Get list of restaurants
 `GET /restaurants`
 
-### Get a specific restaurant
+#### Get a specific restaurant
 `GET /restaurants/{restaurantID}`
 
-### Post new restaurant
+#### Post new restaurant
 `POST /restaurants`
 
-### Update restaurant
+#### Update restaurant
 `PUT /restaurants/{restaurantID}`
 
-### Delete restaurant 
+#### Delete restaurant 
 `DELETE /restaurants/{restaurantID}`
 
-
-### Get list of menus
+### Menus
+#### Get list of menus
 `GET /restaurants/{restaurantID}/menus`
 
-### Get a specific menu
+#### Get a specific menu
 `GET /restaurants/{restaurantId}/menus/{menuID}`
 
 ### Post new menu
