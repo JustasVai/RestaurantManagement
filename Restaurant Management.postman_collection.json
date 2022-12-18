@@ -18,7 +18,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiZXhwIjoxNjY3NjgzNzg3fQ.LUihRzJCVNB51xygY88aDqyHhVd_COPmQaYNWKwlYRQ",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaXNzIjoianVzdGFzIiwiZXhwIjoxNjY5MTE3NzA2fQ.-1TsW7KNFYq_QDkncayDr4cAx2hXFGu5n5XilqUY4_8",
 									"type": "string"
 								}
 							]
@@ -49,7 +49,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiZXhwIjoxNjY3NjgzNzg3fQ.LUihRzJCVNB51xygY88aDqyHhVd_COPmQaYNWKwlYRQ",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaXNzIjoianVzdGFzIiwiZXhwIjoxNjY5MTE3NzA2fQ.-1TsW7KNFYq_QDkncayDr4cAx2hXFGu5n5XilqUY4_8",
 									"type": "string"
 								}
 							]
@@ -81,7 +81,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiZXhwIjoxNjY3Njc4NjQxfQ.9hMH3Qv__6s6pThQp0G2JmQKwGgyeUXRPUVB3aXnAMU",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hcyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiJqb25hcyIsImV4cCI6MTY2ODk1NzgxNn0.T-Hh0ZKXxkmAP2lYMNJAs4HfN-6RONTtSvp8avnTfew",
 									"type": "string"
 								}
 							]
@@ -256,7 +256,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiZXhwIjoxNjY3Njc4NjQxfQ.9hMH3Qv__6s6pThQp0G2JmQKwGgyeUXRPUVB3aXnAMU",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJqdXN0YXMiLCJleHAiOjE2NzA0MjU0NzZ9.vNqB7QowgE8kSA2xWaVnEl0Xe2HOwxRk5hxmdHulrtw",
 									"type": "string"
 								}
 							]
@@ -265,7 +265,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"startDate\": \"2022-10-04T21:00:00.000+00:00\",\r\n    \"endDate\": \"2022-10-11T21:00:00.000+00:00\",\r\n    \"title\": \"Burger menu\",\r\n    \"description\": \"Menu with only burgers\"\r\n}",
+							"raw": "{\r\n    \"startDate\": \"2022-10-04T21:00:00.000+00:00\",\r\n    \"endDate\": \"2023-10-11T21:00:00.000+00:00\",\r\n    \"title\": \"Burger menu\",\r\n    \"description\": \"Menu with only burgers\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -273,7 +273,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/api/v1/restaurants/38c761f5-1760-493a-ae72-f1e6b4dbec5c/menus",
+							"raw": "http://localhost:8081/api/v1/restaurants/a0dbb980-8a3e-46c2-b481-f3d721ab187f/menus",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -283,7 +283,7 @@
 								"api",
 								"v1",
 								"restaurants",
-								"38c761f5-1760-493a-ae72-f1e6b4dbec5c",
+								"a0dbb980-8a3e-46c2-b481-f3d721ab187f",
 								"menus"
 							]
 						}
@@ -440,7 +440,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n        \"name\": \"Margarita 30cm\",\r\n        \"price\": 15,\r\n        \"recipe\": \"160g cheese, 220g tomatoes\",\r\n        \"description\": \"Pizza with tomatoes\"\r\n    }",
+							"raw": "  {\r\n        \"name\": \"Margarita 30cm\",\r\n        \"price\": 15,\r\n        \"recipe\": \"160g cheese, 220g tomatoes\",\r\n        \"description\": \"Pizza with tomatoes\"\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -448,7 +448,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/api/v1/restaurants/38c761f5-1760-493a-ae72-f1e6b4dbec5c/menus/12bc9fe8-0885-41a9-8555-b0a65f1f218e/items",
+							"raw": "http://localhost:8081/api/v1/restaurants/07fec0ca-0bae-4906-8e9a-d7cadd5edb20/menus/09c77f41-286d-4cc4-9cc3-a1797ab4901c/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -458,9 +458,9 @@
 								"api",
 								"v1",
 								"restaurants",
-								"38c761f5-1760-493a-ae72-f1e6b4dbec5c",
+								"07fec0ca-0bae-4906-8e9a-d7cadd5edb20",
 								"menus",
-								"12bc9fe8-0885-41a9-8555-b0a65f1f218e",
+								"09c77f41-286d-4cc4-9cc3-a1797ab4901c",
 								"items"
 							]
 						}
@@ -553,7 +553,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJqdXN0YXMiLCJleHAiOjE2Njg3MDc5NTh9.ooPU19J-9m2Q7RvitImpwEAhyd25CeNf4RQ6Sueay50",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJqdXN0YXMiLCJleHAiOjE2Njg3NTU3MTd9.CaNuL2f0OqfDywJdU9RGJslZz2-WVYFQIUF6giC6c4I",
 									"type": "string"
 								}
 							]
@@ -576,15 +576,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/users",
+							"raw": "http://localhost:8081/api/users",
 							"protocol": "http",
 							"host": [
-								"test-env",
-								"eba-fmypdxa8",
-								"us-east-1",
-								"elasticbeanstalk",
-								"com"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"users"
@@ -608,15 +605,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/login",
+							"raw": "http://localhost:8081/api/login",
 							"protocol": "http",
 							"host": [
-								"test-env",
-								"eba-fmypdxa8",
-								"us-east-1",
-								"elasticbeanstalk",
-								"com"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"login"
@@ -632,7 +626,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{  \r\n    \"username\":\"jonas\",\r\n    \"email\":\"jonas@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+							"raw": "{  \r\n    \"username\":\"justas\",\r\n    \"email\":\"jonas@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -640,15 +634,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/register",
+							"raw": "http://localhost:8081/api/register",
 							"protocol": "http",
 							"host": [
-								"test-env",
-								"eba-fmypdxa8",
-								"us-east-1",
-								"elasticbeanstalk",
-								"com"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"register"
@@ -706,7 +697,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL2FwaS9sb2dpbiIsImV4cCI6MTY2NzY3ODUwMH0.aQHx5m8-StYVzbJhBIG5O-UVre7cKz7Q5HQtR6VnvE8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXN0YXMiLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9FTVBMT1lFRSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJqdXN0YXMiLCJleHAiOjE2Njg5Njk2MzV9.HQUBONtajGCl6OPO8CoE0OjcWBYzOjVVPaqxI4f6Vms",
 									"type": "string"
 								}
 							]
@@ -754,15 +745,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://test-env.eba-fmypdxa8.us-east-1.elasticbeanstalk.com/api/users/justas",
+							"raw": "http://localhost:8081/api/users/justas",
 							"protocol": "http",
 							"host": [
-								"test-env",
-								"eba-fmypdxa8",
-								"us-east-1",
-								"elasticbeanstalk",
-								"com"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"users",
