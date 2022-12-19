@@ -1,4 +1,11 @@
 # Project description
+
+# System architecture
+The system consists of the following components:\
+Back-end - Spring Boot\
+Front-end - Angular\
+Database - MySQL (local)
+
 ## System database ER diagram
 ![image](https://user-images.githubusercontent.com/67903431/208318871-2a622abc-09fe-44fb-a4e7-a13bc42710ad.png)
 
