@@ -16,7 +16,10 @@ The following table gives an overview of how the API functions generally behave.
 | `DELETE` | Return `200 OK` if the resource was deleted successfully. The (deleted) result is returned as JSON. |
 
 ## API V1  /api/v1/{path}:
-### Restaurants 
+## Restaurants 
+
+### 
+Every request needs header: Authorization: Bearer OAUTH-TOKEN
 #### Get list of restaurants
 ```http
 GET /restaurants
@@ -96,7 +99,7 @@ Example response:
 DELETE /restaurants/{restaurantID}
 ```
 
-### Menus
+## Menus
 #### Get list of menus
 ```http
 GET /restaurants/{restaurantID}/menus
@@ -169,7 +172,7 @@ Example response:
 ```http
 DELETE /restaurants/{restaurantId}/menus/{menuID}
 ```
-
+## Menu items
 #### Get list of menu items
 ```http
 GET /restaurants/{restaurantID}/menus/{menuID}/items
@@ -243,4 +246,67 @@ Example response:
 DELETE /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
 ```
 
+## Users 
+## /api/{path}
 
+#### Get all users(admin only)
+```http
+GET /users
+```
+Example response:
+```
+{
+  "email": "String",
+  "username": "String",
+  "roles": [
+        {
+          "roleName": "ROLE_USER"
+        }
+      ]
+   },
+```
+
+#### Login to get token
+```http
+POST /login
+```
+Example request body:
+```
+{
+    "username":"String",
+    "password":"String"
+}
+```
+Example response:
+```
+{
+  "access_token": "String",
+  "refresh_token": "String"
+}
+```
+
+
+#### Register new user
+```http
+POST /register
+```
+Example request body:
+```
+{
+    "username":"String",
+    "email":"String",
+    "password":"String"
+}
+```
+
+#### Get new token without login
+```http
+POST /token/refresh
+```
+Example response:
+```
+{
+  "access_token": "String",
+  "refresh_token": "String"
+}
+```
