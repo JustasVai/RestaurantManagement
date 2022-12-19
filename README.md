@@ -20,7 +20,8 @@ The following table gives an overview of how the API functions generally behave.
 
 ### 
 Every request needs header:
-```Authorization: Bearer OAUTH-TOKEN
+```http
+Authorization: Bearer OAUTH-TOKEN
 ```
 #### Get list of restaurants
 ```http
