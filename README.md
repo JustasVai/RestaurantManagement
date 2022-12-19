@@ -21,20 +21,74 @@ The following table gives an overview of how the API functions generally behave.
 ```http
 GET /restaurants
 ```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0"
+  "name": "String",
+  "address": "String",
+  "rating": 0,
+  "phoneNumber": "String",
+  "description": "String"
+}
+```
 
 #### Get a specific restaurant
 ```http
 GET /restaurants/{restaurantID}
 ```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "name": "String",
+  "address": "String",
+  "rating": 0,
+  "phoneNumber": "String",
+  "description": "String"
+}
+```
+
 
 #### Post new restaurant
 ```http
 POST /restaurants
 ```
+Example request body:
+```
+{
+  "name": "String",
+  "address": "String",
+  "rating": 0,
+  "phoneNumber": "String",
+  "description": "String"
+}
+```
 
 #### Update restaurant
 ```http
 PUT /restaurants/{restaurantID}
+```
+Example request body:
+```
+{
+  "name": "String",
+  "address": "String",
+  "rating": 0,
+  "phoneNumber": "String",
+  "description": "String"
+}
+```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "name": "String",
+  "address": "String",
+  "rating": 0,
+  "phoneNumber": "String",
+  "description": "String"
+}
 ```
 
 #### Delete restaurant 
@@ -47,20 +101,68 @@ DELETE /restaurants/{restaurantID}
 ```http
 GET /restaurants/{restaurantID}/menus
 ```
+Example response:
+```
+{
+    "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+    "startDate": "2022-10-04T21:00:00.000+00:00",
+    "endDate": "2023-10-11T21:00:00.000+00:00",
+    "title": "String",
+    "description": "String"
+}
+```
 
 #### Get a specific menu
 ```http
 GET /restaurants/{restaurantId}/menus/{menuID}
+```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "startDate": "2022-10-04T21:00:00.000+00:00",
+  "endDate": "2023-10-11T21:00:00.000+00:00",
+  "title": "String",
+  "description": "String"
+}
 ```
 
 #### Post new menu
 ```http
 POST /restaurants/{restaurantID}/menus
 ```
+Example request body:
+```
+{
+  "startDate": "2022-10-04T21:00:00.000+00:00",
+  "endDate": "2023-10-11T21:00:00.000+00:00",
+  "title": "String",
+  "description": "String"
+}
+```
 
 #### Update menu
 ```http
 PUT /restaurants/{restaurantId}/menus/{menuID}
+```
+Example request body:
+```
+{
+  "startDate": "2022-10-04T21:00:00.000+00:00",
+  "endDate": "2023-10-11T21:00:00.000+00:00",
+  "title": "String",
+  "description": "String"
+}
+```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "startDate": "2022-10-04T21:00:00.000+00:00",
+  "endDate": "2023-10-11T21:00:00.000+00:00",
+  "title": "String",
+  "description": "String"
+}
 ```
 
 #### Delete menu
@@ -72,20 +174,68 @@ DELETE /restaurants/{restaurantId}/menus/{menuID}
 ```http
 GET /restaurants/{restaurantID}/menus/{menuID}/items
 ```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "name": "String",
+  "price": 0,
+  "recipe": "String",
+  "description": "String"
+}
+```
 
 #### Get a specific menu item
 ```http
 GET /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
+```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "name": "String",
+  "price": 0,
+  "recipe": "String",
+  "description": "String"
+}
 ```
 
 #### Post new menu item
 ```http
 POST /restaurants/{restaurantID}/menus/{menuID}/items
 ```
+Example request body:
+```
+{
+  "name": "String",
+  "price": 0,
+  "recipe": "String",
+  "description": "String"
+}
+```
 
 #### Update menu item
 ```http
 PUT /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
+```
+Example request body:
+```
+{
+  "name": "String",
+  "price": 0,
+  "recipe": "String",
+  "description": "String"
+}
+```
+Example response:
+```
+{
+  "id": "550ce892-fcbf-4cdb-bb5a-c0305842a4e0",
+  "name": "String",
+  "price": 0,
+  "recipe": "String",
+  "description": "String"
+}
 ```
 
 #### Delete menu item
