@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/67903431/208318871-2a622abc-09fe-44fb-a4e7-a13bc42710ad.png)
 
 
-## API documentation
+# API documentation
 The Restaurant management system(backend) REST API description.
 
 The following table gives an overview of how the API functions generally behave.
@@ -18,49 +18,79 @@ The following table gives an overview of how the API functions generally behave.
 ## API V1  /api/v1/{path}:
 ### Restaurants 
 #### Get list of restaurants
-`GET /restaurants`
+```http
+GET /restaurants
+```
 
 #### Get a specific restaurant
-`GET /restaurants/{restaurantID}`
+```http
+GET /restaurants/{restaurantID}
+```
 
 #### Post new restaurant
-`POST /restaurants`
+```http
+POST /restaurants
+```
 
 #### Update restaurant
-`PUT /restaurants/{restaurantID}`
+```http
+PUT /restaurants/{restaurantID}
+```
 
 #### Delete restaurant 
-`DELETE /restaurants/{restaurantID}`
+```http
+DELETE /restaurants/{restaurantID}
+```
 
 ### Menus
 #### Get list of menus
-`GET /restaurants/{restaurantID}/menus`
+```http
+GET /restaurants/{restaurantID}/menus
+```
 
 #### Get a specific menu
-`GET /restaurants/{restaurantId}/menus/{menuID}`
+```http
+GET /restaurants/{restaurantId}/menus/{menuID}
+```
 
-### Post new menu
-`POST /restaurants/{restaurantID}/menus`
+#### Post new menu
+```http
+POST /restaurants/{restaurantID}/menus
+```
 
-### Update menu
-`PUT /restaurants/{restaurantId}/menus/{menuID}`
+#### Update menu
+```http
+PUT /restaurants/{restaurantId}/menus/{menuID}
+```
 
-### Delete menu
-`DELETE /restaurants/{restaurantId}/menus/{menuID}`
+#### Delete menu
+```http
+DELETE /restaurants/{restaurantId}/menus/{menuID}
+```
 
+#### Get list of menu items
+```http
+GET /restaurants/{restaurantID}/menus/{menuID}/items
+```
 
-### Get list of menu items
-`GET /restaurants/{restaurantID}/menus/{menuID}/items`
+#### Get a specific menu item
+```http
+GET /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
+```
 
-### Get a specific menu item
-`GET /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}`
+#### Post new menu item
+```http
+POST /restaurants/{restaurantID}/menus/{menuID}/items
+```
 
-### Post new menu item
-`POST /restaurants/{restaurantID}/menus/{menuID}/items`
+#### Update menu item
+```http
+PUT /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
+```
 
-### Update menu item
-`PUT /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}`
+#### Delete menu item
+```http
+DELETE /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}
+```
 
-### Delete menu item
-`DELETE /restaurants/{restaurantId}/menus/{menuID}/items/{itemID}`
 
