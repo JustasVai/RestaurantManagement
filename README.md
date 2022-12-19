@@ -27,6 +27,8 @@ Database - MySQL (local)
 
 ## System database ER diagram
 ![image](https://user-images.githubusercontent.com/67903431/208318871-2a622abc-09fe-44fb-a4e7-a13bc42710ad.png)
+![image](https://user-images.githubusercontent.com/67903431/208391906-6277f5fc-c4c5-42e2-b5c7-93d561f4ba1f.png)
+
 
 # Front end wireframes
 
@@ -36,13 +38,15 @@ Database - MySQL (local)
 ![image](https://user-images.githubusercontent.com/67903431/208390424-a24ef3be-0b91-4f78-b275-0a91f8d943b1.png)
 ## Restaurants list window(Find your restaurant button pressed)
 ![image](https://user-images.githubusercontent.com/67903431/208390466-575c5383-3f0c-4d07-bf95-ccec5a1d04bb.png)
-## Menu list window
+## Create new restaurant window
 ![image](https://user-images.githubusercontent.com/67903431/208390482-445b9456-d596-4709-942e-e424599d23d5.png)
-##
+## Menu list window
 ![image](https://user-images.githubusercontent.com/67903431/208390569-45d5e957-5ad8-4cc9-be82-b227ac96d000.png)
-##
+## Edit menu window
+![image](https://user-images.githubusercontent.com/67903431/208392258-bb17cfd9-eabf-45bb-93bb-456b34b76cb4.png)
+## Menu items list
 ![image](https://user-images.githubusercontent.com/67903431/208390753-f5ca1518-52ba-481d-8387-c90ca1cf2843.png)
-##
+## Recipe(employee only)
 ![image](https://user-images.githubusercontent.com/67903431/208390781-758bbbe5-2b7f-4b16-8020-dcde6fd64766.png)
 ## Users window (admin only)
 ![image](https://user-images.githubusercontent.com/67903431/208390921-6e103048-a52e-488c-b2fb-6abbe96d9340.png)
